@@ -1,6 +1,6 @@
 module FarMar
   class Vendor
-    attr_accessor :id, :name 
+    attr_accessor :id, :name
 
     def initialize(row)
       @id = row[0]
@@ -19,6 +19,7 @@ module FarMar
 
     def self.by_market(market_id)
       # return all vendor objects with this market id
+    end
 
     def market
       # take market_id for this vendor and return market instanceit
@@ -36,14 +37,6 @@ module FarMar
       # returns array of product instances for this vendor
 
     end
-
-
-
-
-
-
-
-
 
   end
 end
