@@ -1,7 +1,7 @@
 module FarMar
   class Market
 
-    attr_accessor :id
+    attr_accessor :id, :name
 
     def initialize(row)
       @id = row[0]
@@ -24,7 +24,7 @@ module FarMar
   def vendors
     #given the market_id we will return an array of vendors.
   end
-  
+
   end
 end
 
