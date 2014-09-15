@@ -10,15 +10,21 @@ module FarMar
     end
 
     def self.all
-      # read the entire file, and object is created and pushed into an array.
+      temp_array = []
+      CSV.open("support/vendors.csv",'r').each do |line|
+        temp_array << Vendor.new(line) #this may not work
+      end
+      return temp_array
     end
 
     def self.find(vendor_id)
-      # return a specific array (of the row).
+      temp = Vendor.all
+      return temp.find{|vendor| vendor.id == id}
     end
 
     def self.by_market(market_id)
-      # return all vendor objects with this market id
+      temp = Vendor.all
+      return temp.find_all{|vendor| @market_id == market_id}
     end
 
     def market
