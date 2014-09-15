@@ -1,6 +1,6 @@
 module FarMar
   class Vendor
-    attr_accessor :id
+    attr_accessor :id, :name 
 
     def initialize(row)
       @id = row[0]
