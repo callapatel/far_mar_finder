@@ -13,8 +13,14 @@ module FarMar
       @zip = row[6]
     end
 
+
   def self.all
     #read the entire file, and object is created and pushed into an array.
+    temp_array = []
+    CSV.open("markets.csv",'r').each do |line|
+      temp_array << Market.new(line) #this may not work
+    end
+    return temp_array
   end
 
   def self.find(id)
