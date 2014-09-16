@@ -45,5 +45,8 @@ module FarMar
 
     end
 
+    def self.most_revenue(n)
+      #returns the top n products instance ranked by total revenue
+    end
   end
 end

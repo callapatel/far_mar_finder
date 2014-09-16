@@ -50,5 +50,23 @@ module FarMar
 
     end
 
+    def self.most_revenue(n)
+      #returns top n vendor instances ranked by total rev
+      temp = Vendor.all.first(10)
+      temp.sort_by{|vendor| vendor.revenue }.first(n)
+    end
+
+    def self.most_items(n)
+      #returns top n vendor instances ranked by most items sold
+    end
+
+    def self.revenue(date)
+      #add all revenues for a specific date
+    end
+
+    def revenue_by_date(date)
+      #instance of revenue for a specific date
+    end
+
   end
 end
