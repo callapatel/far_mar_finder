@@ -34,6 +34,22 @@ module FarMar
     FarMar::Vendor.by_market(id)
   end
 
+  def products
+    # returns a collection of product instances associated to this market use .unique
+    vendors.collect{|vendor| vendor.products}.flatten.uniq
+  end
+
+  def self.search(string)
+    # returns a collection of markets whose names include string or whose vendors contains string
+    Market.all.find_all do |market|
+
+      if market.name.downcase.include?(string)  ||
+        market.vendors.collect{|vendor| vendor.name.downcase.include?(string)}.include?(true)
+        market
+      end
+    end
+  end
+
   end
 end
 

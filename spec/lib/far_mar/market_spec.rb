@@ -13,6 +13,10 @@ describe FarMar::Market do
     it "responds to 'find'" do
       expect(FarMar::Market).to respond_to :find
     end
+
+    it "responds to 'search'" do
+      expect(FarMar::Market.search('school').include?(FarMar::Market.find(75))).to eq true
+    end
   end
 
   describe "attributes" do
@@ -54,6 +58,10 @@ describe FarMar::Market do
 
     it "finds the vendors" do
       expect(market.vendors.first.id).to eq 1
+    end
+
+    it "finds the products" do
+      expect(market.products.count).to eq 13
     end
   end
 end
