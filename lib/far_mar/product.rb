@@ -1,28 +1,31 @@
 module FarMar
   class Product
-    attr_accessor :id, :name
+    attr_accessor :id, :name, :vendor_id
 
     def initialize(row)
-      @id = row[0]
+      @id = row[0].to_i
       @name = row[1]
-      @vendor_id = row[2]
+      @vendor_id = row[2].to_i
     end
 
     def self.all
+      # returns all product instances
       temp_array = []
       CSV.open("support/products.csv",'r').each do |line|
-        temp_array << Products.new(line) #this may not work
+        temp_array << Product.new(line) #this may not work
       end
       return temp_array
     end
 
     def self.find(id)
-      temp = Products.all
+      # returns specific product instance given an id number
+      temp = Product.all
       return temp.find{|product| product.id == id}
     end
 
     def vendor
       #using instance ID return vendor instance
+      return FarMar::Vendor.find(vendor_id)
     end
 
     def sales
@@ -33,8 +36,10 @@ module FarMar
       #number of times product sold
     end
 
-    def self.by_vendor(vendor_id)
-      #given vendor id return all products within an array specific to that array
+    def self.by_vendor(id)
+      # returns all the products with this vendor id
+      Product.all.find_all{|product| product.vendor_id == id}
+
     end
 
 

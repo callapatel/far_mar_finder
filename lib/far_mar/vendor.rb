@@ -5,8 +5,8 @@ module FarMar
     def initialize(row)
       @id = row[0].to_i
       @name = row[1]
-      @employees = row[2]
-      @market_id = row[3]
+      @employees = row[2].to_i
+      @market_id = row[3].to_i
     end
 
     def self.all

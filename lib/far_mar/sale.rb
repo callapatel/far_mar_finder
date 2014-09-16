@@ -3,11 +3,11 @@ module FarMar
     attr_accessor :id, :name
 
     def initialize(row)
-      @id = row[0]
-      @amount = row[1] #in cents
+      @id = row[0].to_i
+      @amount = row[1].to_i #in cents
       @purchase_time = row[2]
-      @vendor_id = row[3]
-      @product_id = row[4]
+      @vendor_id = row[3].to_i
+      @product_id = row[4].to_i
     end
 
     def self.all
