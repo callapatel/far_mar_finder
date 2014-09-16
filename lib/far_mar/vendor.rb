@@ -17,7 +17,7 @@ module FarMar
       return temp_array
     end
 
-    def self.find(vendor_id)
+    def self.find(id)
       temp = Vendor.all
       return temp.find{|vendor| vendor.id == id}
     end

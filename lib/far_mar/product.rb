@@ -25,11 +25,12 @@ module FarMar
 
     def vendor
       #using instance ID return vendor instance
-      return FarMar::Vendor.find(vendor_id)
+      return FarMar::Vendor.find(@vendor_id)
     end
 
     def sales
       #array of sale instances
+      
     end
 
     def number_of_sales
