@@ -52,7 +52,9 @@ module FarMar
 
     def self.most_revenue(n)
       #returns top n vendor instances ranked by total rev
-      temp = Vendor.all.first(10)
+      temp = Vendor.all
+      #puts temp.collect{|vendor| [vendor.name, vendor.revenue]}.inspect
+      #puts out vendor name and revenue
       temp.sort_by{|vendor| vendor.revenue }.first(n)
     end
 
