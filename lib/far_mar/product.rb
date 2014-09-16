@@ -36,6 +36,7 @@ module FarMar
 
     def number_of_sales
       #number of times product sold
+      sales.count
     end
 
     def self.by_vendor(id)
@@ -43,9 +44,6 @@ module FarMar
       Product.all.find_all{|product| product.vendor_id == id}
 
     end
-
-
-
 
   end
 end
