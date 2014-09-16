@@ -1,9 +1,9 @@
 module FarMar
   class Vendor
-    attr_accessor :id, :name
+    attr_accessor :id, :name, :employees, :market_id
 
     def initialize(row)
-      @id = row[0]
+      @id = row[0].to_i
       @name = row[1]
       @employees = row[2]
       @market_id = row[3]
@@ -23,12 +23,15 @@ module FarMar
     end
 
     def self.by_market(market_id)
+      #returns all of the vendors with the given market ID
       temp = Vendor.all
-      return temp.find_all{|vendor| @market_id == market_id}
+      return temp.find_all{|vendor| vendor.id == market_id}
     end
 
     def market
-      # take market_id for this vendor and return market instanceit
+      # take market_id for this vendor and return market instance
+      FarMar::Market.find(@market_id)
+
     end
 
     def sales

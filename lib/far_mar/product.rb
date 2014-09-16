@@ -9,30 +9,33 @@ module FarMar
     end
 
     def self.all
-      # read the entire file, and object is created and pushed into an array.
+      temp_array = []
+      CSV.open("support/products.csv",'r').each do |line|
+        temp_array << Products.new(line) #this may not work
+      end
+      return temp_array
     end
 
     def self.find(id)
-      # return a specific array (of the row).
+      temp = Products.all
+      return temp.find{|product| product.id == id}
     end
 
+    def vendor
+      #using instance ID return vendor instance
+    end
 
+    def sales
+      #array of sale instances
+    end
 
-  def vendor
-    #using instance ID return vendor instance
-  end
+    def number_of_sales
+      #number of times product sold
+    end
 
-  def sales
-    #array of sale instances
-  end
-
-  def number_of_sales
-    #number of times product sold
-  end
-
-  def self.by_vendor(vendor_id)
-    #given vendor id return all products within an array specific to that array
-  end
+    def self.by_vendor(vendor_id)
+      #given vendor id return all products within an array specific to that array
+    end
 
 
 
