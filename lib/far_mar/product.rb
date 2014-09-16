@@ -30,7 +30,8 @@ module FarMar
 
     def sales
       #array of sale instances
-      
+      FarMar::Sale.all.find_all{ |sales| sales.product_id == id}
+
     end
 
     def number_of_sales

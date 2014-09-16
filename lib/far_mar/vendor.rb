@@ -1,11 +1,11 @@
 module FarMar
   class Vendor
-    attr_accessor :id, :name, :employees, :market_id
+    attr_accessor :id, :name, :no_of_employees, :market_id
 
     def initialize(row)
       @id = row[0].to_i
       @name = row[1]
-      @employees = row[2].to_i
+      @no_of_employees = row[2].to_i
       @market_id = row[3].to_i
     end
 
@@ -25,7 +25,7 @@ module FarMar
     def self.by_market(market_id)
       #returns all of the vendors with the given market ID
       temp = Vendor.all
-      return temp.find_all{|vendor| vendor.id == market_id}
+      return temp.find_all{|vendor| vendor.market_id == market_id}
     end
 
     def market
@@ -36,14 +36,17 @@ module FarMar
 
     def sales
       # returns an array of sales instances with this vendor's id
+      FarMar::Sale.all.find_all{|sales| sales.vendor_id == id}
     end
 
     def revenue
       # returns revenue in cents made from all sales by this vendor
+      sales.inject(0){|sum, sale| sum+= sale.amount}
     end
 
-    def product
+    def products
       # returns array of product instances for this vendor
+      FarMar::Product.all.find_all{|product| product.vendor_id == id}
 
     end
 
