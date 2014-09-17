@@ -1,7 +1,9 @@
 module FarMar
-  class Market
+  class Market < Finder
 
-    attr_accessor :id, :name, :address, :city, :county, :state, :zip
+    attr_accessor :id, :name, :address, :city, :county, :state, :zip, :file_name
+
+    set_path("support/markets.csv")
 
     def initialize(row)
       @id = row[0].to_i
@@ -14,18 +16,18 @@ module FarMar
     end
 
 
-    def self.all
-      #read the entire file, and object is created and pushed into an array.
-      temp_array = []
-      CSV.open("support/markets.csv",'r').each do |line|
-        temp_array << Market.new(line) #this may not work
-      end
-      return temp_array
-    end
+    # def self.all
+    #   #read the entire file, and object is created and pushed into an array.
+    #   temp_array = []
+    #   CSV.open("support/markets.csv",'r').each do |line|
+    #     temp_array << Market.new(line) #this may not work
+    #   end
+    #   return temp_array
+    # end
 
     def self.find(id)
       #return a specific array (of the row).
-      temp = Market.all
+      temp = self.all
       return temp.find{|market| market.id == id}
     end
 
@@ -79,6 +81,6 @@ module FarMar
       temp = Market.all
       return temp.find_all{|market| market.state.downcase.include? match.downcase }
     end
-    
+
   end
 end
