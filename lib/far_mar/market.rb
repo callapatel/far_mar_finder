@@ -69,5 +69,16 @@ module FarMar
       vendors.min_by{|vendor| vendor.revenue_by_date(date) }
     end
 
+    def self.find_by_name(match)
+      #want to find market by name
+      temp = Market.all
+      return temp.find{|market| market.name.downcase == match.downcase}
+    end
+
+    def self.find_all_by_state(match)
+      temp = Market.all
+      return temp.find_all{|market| market.state.downcase.include? match.downcase }
+    end
+    
   end
 end

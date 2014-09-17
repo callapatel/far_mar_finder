@@ -40,7 +40,6 @@ module FarMar
       b = end_time#.to_i
       Sale.all.find_all {|sale| sale.purchase_time <b && sale.purchase_time >=a}
     end
-
-
+    
   end
 end

@@ -55,5 +55,18 @@ module FarMar
       temp.sort_by{|product| product.sales.inject(0){|sum,sale| sum += sale.amount}}.reverse.first(n)
       #a.each {|product| puts product.name, product.revenue}
     end
+
+
+    def self.find_by_name(match)
+      #want to find market by name
+      temp = Product.all
+      return temp.find{|product| product.name.downcase.include? match.downcase}
+    end
+
+    def self.find_all_by_name(match)
+      temp = Product.all
+      return temp.find_all{|product| product.name.downcase.include? match.downcase }
+    end
+
   end
 end

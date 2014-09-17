@@ -82,5 +82,16 @@ module FarMar
       temp.inject(0){|sum,sale| sum += sale.amount}
     end
 
+  def self.find_by_name(match)
+    #want to find market by name
+    temp = Vendor.all
+    return temp.find{|vendor| vendor.name.downcase.include? match.downcase}
+  end
+
+  def self.find_all_by_name(match)
+    temp = Vendor.all
+    return temp.find_all{|vendor| vendor.name.downcase.include? match.downcase }
+  end
+
   end
 end
