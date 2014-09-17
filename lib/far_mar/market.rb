@@ -55,9 +55,9 @@ module FarMar
       vendors.max_by{|vendor| vendor.revenue }
     end
 
-    def prefered_vendor(date)
+    def preferred_vendor_by_date(date)
       #returns revenue for the highest vendor in a given date
-      vendors.max_by{|vendor| vendor.revenue(date) }
+      vendors.max_by{|vendor| vendor.revenue_by_date(date) }
     end
 
     def worst_vendor
@@ -65,8 +65,8 @@ module FarMar
       vendors.min_by{|vendor| vendor.revenue }
     end
 
-    def worst_vendor(date)
-      vendors.min_by{|vendor| vendor.revenue(date) }
+    def worst_vendor_by_date(date)
+      vendors.min_by{|vendor| vendor.revenue_by_date(date) }
     end
 
   end

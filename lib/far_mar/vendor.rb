@@ -53,21 +53,31 @@ module FarMar
     def self.most_revenue(n)
       #returns top n vendor instances ranked by total rev
       temp = Vendor.all
-      #puts temp.collect{|vendor| [vendor.name, vendor.revenue]}.inspect
-      #puts out vendor name and revenue
-      temp.sort_by{|vendor| vendor.revenue }.first(n)
+      temp.sort_by{|vendor| vendor.revenue }.reverse.first(n)
+      #new_array = temp.sort_by{|vendor| vendor.revenue }.reverse.first(n)
+      #new_array.each {|vendor| puts vendor.revenue}
     end
 
     def self.most_items(n)
       #returns top n vendor instances ranked by most items sold
+      temp = Vendor.all
+      temp.sort_by{|vendor| vendor.sales.count }.reverse.first(n)
+      # new_array = temp.sort_by{|vendor| vendor.sales.count }.reverse.first(n)
+      # new_array.each {|vendor| puts vendor.sales.count}
     end
 
     def self.revenue(date)
       #add all revenues for a specific date
+      day = Time.parse(date)
+      # puts day.inspect
+      next_day = day + 86400
+      temp = FarMar::Sale.between(day,next_day)
+      temp.inject(0){|sum, sale| sum+=sale.amount}
     end
 
     def revenue_by_date(date)
       #instance of revenue for a specific date
+      
     end
 
   end
