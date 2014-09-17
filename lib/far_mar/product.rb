@@ -45,8 +45,15 @@ module FarMar
 
     end
 
+    def revenue
+      sales.inject(0){|sum,sale| sum += sale.amount}
+    end
+
     def self.most_revenue(n)
       #returns the top n products instance ranked by total revenue
+      temp = Product.all
+      temp.sort_by{|product| product.sales.inject(0){|sum,sale| sum += sale.amount}}.reverse.first(n)
+      #a.each {|product| puts product.name, product.revenue}
     end
   end
 end

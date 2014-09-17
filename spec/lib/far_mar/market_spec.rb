@@ -15,7 +15,7 @@ describe FarMar::Market do
     end
 
     it "responds to 'search'" do
-      expect(FarMar::Market.search('school').include?(FarMar::Market.find(75))).to eq true
+      expect(FarMar::Market.search("school").include?(FarMar::Market.find(75))).to eq true
     end
   end
 
