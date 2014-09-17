@@ -76,8 +76,10 @@ module FarMar
     end
 
     def revenue_by_date(date)
-      #instance of revenue for a specific date
-      
+      # revenue for a specific date for this vendor
+      day = Time.parse(date)
+      temp = sales.find_all{|sale| puts sale.purchase_time.inspect;sale.purchase_time >= day && sale.purchase_time < (day + 86400)}
+      temp.inject(0){|sum,sale| sum += sale.amount}
     end
 
   end

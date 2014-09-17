@@ -38,7 +38,7 @@ module FarMar
       # returns all sale instances occurring between these times
       a = beginning_time#.to_i
       b = end_time#.to_i
-      Sale.all.find_all {|sale| sale.purchase_time <b && sale.purchase_time >a}
+      Sale.all.find_all {|sale| sale.purchase_time <b && sale.purchase_time >=a}
     end
 
 
