@@ -1,6 +1,8 @@
 module FarMar
-  class Sale
+  class Sale < Finder
     attr_accessor :id, :name, :amount, :purchase_time, :vendor_id, :product_id
+
+    set_path("support/sales.csv")
 
     def initialize(row)
       @id = row[0].to_i
@@ -10,19 +12,19 @@ module FarMar
       @product_id = row[4].to_i
     end
 
-    def self.all
-      temp_array = []
-      CSV.open("support/sales.csv",'r').each do |line|
-        temp_array << Sale.new(line) #this may not work
-      end
-      return temp_array
-    end
+    # def self.all
+    #   temp_array = []
+    #   CSV.open("support/sales.csv",'r').each do |line|
+    #     temp_array << Sale.new(line) #this may not work
+    #   end
+    #   return temp_array
+    # end
 
-    def self.find(id)
-      # return a specific array (of the row).
-      temp = Sale.all
-      return temp.find{|sale| sale.id == id}
-    end
+    # def self.find(id)
+    #   # return a specific array (of the row).
+    #   temp = Sale.all
+    #   return temp.find{|sale| sale.id == id}
+    # end
 
     def vendor
       #returns associated vendor
@@ -40,6 +42,6 @@ module FarMar
       b = end_time#.to_i
       Sale.all.find_all {|sale| sale.purchase_time <b && sale.purchase_time >=a}
     end
-    
+
   end
 end

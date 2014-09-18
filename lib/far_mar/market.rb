@@ -25,11 +25,11 @@ module FarMar
     #   return temp_array
     # end
 
-    def self.find(id)
-      #return a specific array (of the row).
-      temp = self.all
-      return temp.find{|market| market.id == id}
-    end
+    # def self.find(id)
+    #   #return a specific array (of the row).
+    #   temp = self.all
+    #   return temp.find{|market| market.id == id}
+    # end
 
     def vendors
       #given the market_id we will return an array of vendors.

@@ -1,6 +1,8 @@
 module FarMar
-  class Product
+  class Product < Finder
     attr_accessor :id, :name, :vendor_id
+
+    set_path("support/products.csv")
 
     def initialize(row)
       @id = row[0].to_i
@@ -8,20 +10,20 @@ module FarMar
       @vendor_id = row[2].to_i
     end
 
-    def self.all
-      # returns all product instances
-      temp_array = []
-      CSV.open("support/products.csv",'r').each do |line|
-        temp_array << Product.new(line) #this may not work
-      end
-      return temp_array
-    end
+    # def self.all
+    #   # returns all product instances
+    #   temp_array = []
+    #   CSV.open("support/products.csv",'r').each do |line|
+    #     temp_array << Product.new(line) #this may not work
+    #   end
+    #   return temp_array
+    # end
 
-    def self.find(id)
-      # returns specific product instance given an id number
-      temp = Product.all
-      return temp.find{|product| product.id == id}
-    end
+    # def self.find(id)
+    #   # returns specific product instance given an id number
+    #   temp = Product.all
+    #   return temp.find{|product| product.id == id}
+    # end
 
     def vendor
       #using instance ID return vendor instance

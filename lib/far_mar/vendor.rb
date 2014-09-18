@@ -1,6 +1,8 @@
 module FarMar
-  class Vendor
+  class Vendor < Finder
     attr_accessor :id, :name, :no_of_employees, :market_id
+
+    set_path("support/vendors.csv")
 
     def initialize(row)
       @id = row[0].to_i
@@ -9,18 +11,18 @@ module FarMar
       @market_id = row[3].to_i
     end
 
-    def self.all
-      temp_array = []
-      CSV.open("support/vendors.csv",'r').each do |line|
-        temp_array << Vendor.new(line) #this may not work
-      end
-      return temp_array
-    end
+    # def self.all
+    #   temp_array = []
+    #   CSV.open("support/vendors.csv",'r').each do |line|
+    #     temp_array << Vendor.new(line) #this may not work
+    #   end
+    #   return temp_array
+    # end
 
-    def self.find(id)
-      temp = Vendor.all
-      return temp.find{|vendor| vendor.id == id}
-    end
+    # def self.find(id)
+    #   temp = Vendor.all
+    #   return temp.find{|vendor| vendor.id == id}
+    # end
 
     def self.by_market(market_id)
       #returns all of the vendors with the given market ID
